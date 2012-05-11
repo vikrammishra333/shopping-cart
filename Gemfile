@@ -21,6 +21,9 @@ gem 'client_side_validations'
 gem 'therubyracer'
 gem "paperclip", "~> 3.0"
 gem 'prawn'
+gem 'capistrano'
+gem 'pg'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
