@@ -1,0 +1,6 @@
+<div class="product">
+	<span><%= link_to product.name, product %> </span><br />
+	<span><%= image_tag(product.imagepath, :size => "100x100", :alt => product.name) %> </span><br />
+	<span id="price"><b>$<%= product.price %> </b></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span style="vertical-align:middle;"><%= image_tag("btn_buynow_LG.gif") %> </span>
+</div>

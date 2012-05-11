@@ -1,0 +1,35 @@
+<% if @cart.items.count > 0 %>
+	<h3>Items in your Cart:</h3>
+	<table style="width:700px;border-collapse:collapse;text-align:center;">
+		<tr>
+			<th>Product Image</th>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Action</th>
+		</tr>
+		<%for item in @cart.items %>
+		<% row_color = cycle("CCCCCC", "FFFFFF")%>
+		<tr style="background:#<%= row_color %>;">
+			<td><%= image_tag item.product.pic.url(:thumb) %></td>
+			<td><%= item.product.name %></td>
+			<td><%= item.quantity %></td>
+			<td><%= number_to_currency(item.price) %></td>
+			<td><%= link_to("remove item", {:action => "remove_from_cart", :id => item.product.id }, :confirm => "Are you sure you want to delete the item.") %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td>&nbsp;</td>
+			<td><b>Shopping Cart Total</b></td>
+			<td>&nbsp;</td>
+			<td><b><%= number_to_currency(@cart.total_price) %></b></td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	<br />
+	<%= link_to("Continue Shopping", root_path) %> |
+	<%= link_to("Checkout", @order.paypal_url('http://localhost:3000') ) %> |
+	<%= link_to("Empty Cart", {:action => "empty_cart"}, :confirm => "Are you sure you want to empty the cart.") %>
+<% else %>
+	<h3 class="notice">Your Cart is empty.</h3>
+<% end %>

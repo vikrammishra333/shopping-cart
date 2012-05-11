@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="0">
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<html>
+	<head>
+	  <title><%= title %></title>
+	  <%= render 'layouts/stylesheets' %>
+	  <%= csrf_meta_tags %>
+	  <%= javascript_include_tag :application %>
+	  <%= javascript_include_tag :validate %>
+	</head>
+	<body >
+		<div class="container">
+		  <%= render 'layouts/header' %>
+		  <section class="round">
+		    <% flash.each do |key, value| %>
+				<div class="flash <%= key %>"><%= value %></div>
+			<% end %>
+			<%= yield %>
+		  </section>
+		  <%= render 'layouts/footer' %>
+		</div>
+	</body>
+</html>

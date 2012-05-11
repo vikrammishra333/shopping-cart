@@ -1,0 +1,7 @@
+<%  if current_user.admin? %>
+	<h1>New category</h1>
+	
+	<%= render 'form' %>
+<% end %>
+
+<%= link_to 'Back', categories_path %>

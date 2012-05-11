@@ -1,0 +1,196 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+.container {
+  /*width: 710px;*/
+  width:80%;
+  left:10%;
+  position:absolute;
+}
+
+body {
+  background: #cff;
+}
+
+header img {
+  padding: 1em;
+  background: #fff;
+}
+
+section {
+  font-size: 120%;
+  /*padding: 20px;
+  margin-top: 1em;*/
+  background: #fff;
+}
+
+section h1 {
+  font-size: 200%;
+}
+
+/* Links 
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+*/
+a:visited {
+  color: #069;
+}
+
+nav {
+  background-color: #4F81BD;
+  /*padding: 0 0.7em;*/
+  white-space: nowrap;
+  width:100%;
+  text-align:right;
+  color:white;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.4em 1em;
+}
+
+nav ul li a {
+  color:#fff;
+  font-weight: bold;
+}
+
+nav ul li a:visited {
+  color: #fff;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+footer {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer nav {
+  float: none;
+  text-align: center;
+}
+.product
+{
+	font-weight:bold;
+	text-align:center;
+	display:inline-block;
+	margin:10px;
+	padding:5px;
+	border:1px solid gray;
+	line-height:2em;
+	
+}
+#price
+{
+	background:url(price_bg.png) top left ;
+	padding:3px;
+}
+#prod_price
+{
+	margin-left:5px;
+	padding:5px ;
+	top:250px;
+	position:absolute;
+}
+#prod_cart
+{
+	margin-left:20px;
+}
+#prod_btn
+{
+	top:-50px;
+	left:200px;
+	position:relative;
+	display:inline;
+	vertical-align:middle;
+}
+.field
+{
+	text-align:center;
+}
+.field label
+{
+	font-weight:bold;
+}
+.fld_label
+{
+	text-align:right;
+}
+.fld_input
+{
+	text-align:left;
+}
+.flash
+{
+	text-align:center;
+}
+.error, .alert {
+    background: none repeat scroll 0 0 #FBE3E4;
+    border-color: #FBC2C4;
+    color: #8A1F11;
+}
+.error, .alert, .notice, .success, .info {
+    border: 2px solid #FBC2C4;
+    margin: 1em;
+    padding: 0.8em;
+}
+#name
+{
+	margin-bottom:5px;
+}
+.notice
+{
+	border:none;
+	color:green;
+}
+.pagination .disabled, em
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  text-align:center;
+  color: #000;
+  padding: 5px;
+  border:1px solid gray;
+}
+.pagination
+{
+	text-align:center;
+}
+
+.pagination a
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  text-align:center;
+  text-decoration:none;
+  color: #fff;
+  background: #290000;
+  padding: 5px;
+  border:1px solid gray;
+}

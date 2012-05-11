@@ -1,0 +1,15 @@
+<h2><%= @category.name %></h2>
+<div id="product_container">
+  <% if !@products.empty? %>
+    <% @products.each do |product| %>
+      <div class="product">
+        <span><%= link_to product.name, product %> </span><br />
+        <span><%= image_tag product.pic.url(:medium) %> </span><br />
+        <span id="price"><b><%= number_to_currency(product.price) %> </b></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="vertical-align:middle;"><%= link_to "Add to Cart", "/pages/add_to_cart/"+product.id.to_s, :remote => true%> </span>
+      </div>
+    <% end %>
+  <% else %>
+     <p>Currently we do not have any product for this category.</p>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+<table style="text-align:center;width:100%;border-collapse:collapse;border:1px solid #CCCCCC;">
+  <tr style="background-color:#FF00FF;border:1px solid black;">
+    <th style="border:1px solid black;">Name</th>
+    <th style="border:1px solid black;">Category</th>
+    <th style="border:1px solid black;">Price</th>
+    <th style="border:1px solid black;">Description</th>
+	<%  if current_user.admin? %>
+		<th style="border:1px solid black;">Action</th>
+	<% end %>
+  </tr>
+
+<% @products.each do |product| %>
+  <% row_color = cycle("CCCCCC", "FFFFFF")%>
+  <tr style="background:#<%= row_color %>;border:1px solid #CCCCCC;">
+    <td style="border:1px solid black;"><%= product.name %></td>
+    <td style="border:1px solid black;"><%= product.category_id %></td>
+    <td style="border:1px solid black;">$<%= product.price %></td>
+    <td style="border:1px solid black;"><%= product.description %></td>
+   <%  if current_user.admin? %>
+		<td style="border:1px solid black;"><%= link_to 'Show', product %>
+		<%= link_to 'Edit', edit_product_path(product) %>
+		<%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+	<tr >
+		<td style="padding:8px;" colspan="5">
+			<%= will_paginate %>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,13 @@
+<div>
+	<h4><%= @product.name %></h4>
+	<p>
+		 <%= image_tag @product.pic.url(:medium) %>
+		<span id="prod_price"><b>Price:<span id="price"><%= number_to_currency(@product.price) %> </b>
+		<span id="prod_cart"><b><%= link_to "Add to Cart", '/pages/add_to_cart/'+@product.id.to_s %></b></span></span><br />
+		<span id="prod_btn"><b>Available Items:<%= @product.available_item %></b>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to image_tag("btn_buynow_LG.gif") %></span>
+	</p>
+	<p>
+		<h4>Description :</h4>
+		<%= @product.description %>
+	</p>
+</div>

@@ -1,0 +1,55 @@
+<% if @cart.items.count > 0 %>
+	<h3>Items in your Cart:</h3>
+	<table style="width:700px;border-collapse:collapse;text-align:center;">
+		<tr>
+			<th>Product Image</th>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Action</th>
+		</tr>
+		<%for item in @cart.items %>
+		<% row_color = cycle("CCCCCC", "FFFFFF")%>
+		<tr style="background:#<%= row_color %>;">
+			<td><%= image_tag(item.product.imagepath, :size => "18x18")%></td>
+			<td><%= item.product.name %></td>
+			<td><%= item.quantity %></td>
+			<td><%= number_to_currency(item.price) %></td>
+			<td><%= link_to("remove item", {:action => "remove_from_cart", :id => item.product.id }, :confirm => "Are you sure you want to delete the item.") %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td>&nbsp;</td>
+			<td><b>Shopping Cart Total</b></td>
+			<td>&nbsp;</td>
+			<td><b><%= number_to_currency(@cart.total_price) %></b></td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	<br />
+	<%= link_to("Continue Shopping", root_path) %> |
+	<%= link_to("Checkout", "/checkout" ) %> |
+	<%= link_to("Empty Cart", {:action => "empty_cart"}, :confirm => "Are you sure you want to empty the cart.") %>
+<% else %>
+	<h3 class="notice">Your Cart is empty.</h3>
+<% end %>
+<%= form_for(@customer, :action => 'save_order') do |f| %>
+<table align="center">
+  <tr class="field">
+    <td class="fld_label"><%= f.label :first_name, "First Name:"  %></td>
+    <td class="fld_input"><%= f.text_field :first_name %></td>
+  </tr>
+  <tr class="field">
+    <td class="fld_label"><%= f.label :last_name, "Last Name:" %></td>
+    <td class="fld_input"><%= f.text_field :last_name %></td>
+  </tr>
+  <tr class="field">
+   <td class="fld_label"><%= f.label :zip_code , "Zip Code:" %></td>
+   <td class="fld_input"> <%= f.text_field :zip_code%></td>
+  </tr>
+  <tr class="actions">
+    <td class="fld_label"> </td>
+    <td class="fld_input"><%= f.submit "Place Order" %></td>
+  </tr>
+</table>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_for(@product, :multipart => true) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table align="center">
+	  <tr class="field">
+		<td class="fld_label"><span style="color:red">*</span><%= f.label :name, "Name:"  %></td>
+		<td class="fld_input"><%= f.text_field :name, :size => "50" %></td>
+	  </tr>
+	  <tr class="field">
+		<td class="fld_label"><span style="color:red">*</span><%= f.label :category_id, "Category:" %></td>
+		<td class="fld_input">
+			<%= 
+				@items = Category.find(:all, :order => "name")
+				f.collection_select( "category_id", @items, :id, :name, options = { :prompt => "Select a Category", :selected => @product.category_id  } )
+			%>
+		</td>
+	  </tr>
+	  <tr class="field">
+		<td class="fld_label"><span style="color:red">*</span><%= f.label :price, "Price(in dollar)" %></td>
+		<td class="fld_input"><%= f.text_field :price %></td>
+	  </tr>
+	   <tr class="field">
+              <td class="fld_label"><span style="color:red">*</span><%= f.label :available_item, "Available Item Count:" %></td>
+              <td class="fld_input"><%= f.text_field :available_item %></td>
+	  </tr>
+          <tr class="field">
+              <td class="fld_label"><span style="color:red">*</span><%= f.label :description, "Description:" %></td>
+              <td class="fld_input"><%= f.text_area :description, :rows => "5", :cols => "38" %></td>
+	  </tr>
+	  <tr class="field">
+		<td class="fld_label"><span style="color:red">*</span><%= f.label :pic, "Upload Product Image:" %></td>
+		<td class="fld_input"><%= f.file_field :pic %></td>
+	  </tr>
+	  <tr class="actions">
+		<td class="fld_label"> </td>
+		<td class="fld_input"><%= f.submit "Submit" %></td>
+	  </tr>
+</table>
+<% end %>

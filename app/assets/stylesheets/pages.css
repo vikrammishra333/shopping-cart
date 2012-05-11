@@ -1,0 +1,30 @@
+.menu {
+  background:#09f;
+  white-space: nowrap;
+  width:100%;
+  text-align:right;
+  color:white;
+  padding: 0 0.7em;
+}
+div ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menu_link {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.4em 0.2em;
+}
+
+.menu_link{
+  font-weight: bold;
+}
+
+.menu_link a:visited {
+  color: #fff;
+}
+
+.menu_link a:hover {
+  text-decoration: underline;
+}

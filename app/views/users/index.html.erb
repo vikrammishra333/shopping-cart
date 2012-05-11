@@ -1,0 +1,30 @@
+<h1>Listing users</h1>
+<table align="center" style="width:600px;border-collapse:collapse;border:1px solid #CCCCCC;">
+  <tr style="background-color:#FF00FF;border:1px solid black;">
+    <th style="border:1px solid black;">Name</th>
+    <th style="border:1px solid black;">Email</th>
+	<th style="border:1px solid black;">Action</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <% row_color = cycle("CCCCCC", "FFFFFF")%>
+  <tr style="background:#<%= row_color %>;border:1px solid #CCCCCC;">
+    <td style="border:1px solid black;width:170px;"><%= user.name %></td>
+    <td style="border:1px solid black;"><%= user.email %></td>
+	<td style="text-align:center;width:150px;border:1px solid black;"><%= link_to 'Show', user %>
+	<%  if current_user.admin?  || user.id == current_user.id %>	
+		<%= link_to 'Edit', edit_user_path(user) %>
+		<%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+	<tr >
+		<td style="padding:8px;" colspan="5">
+			<%= will_paginate %>
+		</td>
+	</tr>
+</table>
+<br />
+<%  if current_user.admin? %>
+	<%= link_to 'Create a New User', new_user_path %>
+<% end %>

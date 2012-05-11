@@ -1,0 +1,29 @@
+<header>
+	<%= image_tag("logo.png", :alt => "Sample App", :class => "round") %>
+	<nav class="round">
+	  <ul>
+		<li><%= link_to "Home", root_path %></li>
+		<li><%= link_to "My Cart", show_cart_path %></li>
+		<% if signed_in? %>
+			<li><%= link_to "Users", "/users" %></li>
+			<% if session[:admin] == true && session[:user_id] %>
+			<li><%= link_to "Category", "/categories" %></li>
+			<li><%= link_to "Product", "/products" %></li>
+			<% end %>
+			<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+		<% else %>
+			<li><%= link_to "Sign in", signin_path %></li>
+		<% end %>
+	  </ul>
+	</nav>
+	<div class="menu round">
+		<ul class="cat">
+			<li class="menu_link"><%= link_to "All", root_path %></li>
+			<% getAllCategory %>
+			<% @categories.each do |category| %>
+			|<li class="menu_link"><%= link_to category.name, category %>
+			<% end %>
+		</ul>
+	</div>
+</header>
+
